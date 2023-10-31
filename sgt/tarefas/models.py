@@ -21,7 +21,7 @@ class Tarefas(models.Model):
     criacao = models.DateTimeField(auto_now_add=True)
     categorias = models.CharField(max_length=25, choices = OPCOES_CATEGORIAS,
                                   default='importante')
-    status = models.Charfield(max_length=25, choices = OPCOES_STATUS,
+    status = models.CharField(max_length=25, choices = OPCOES_STATUS,
                               default= 'pendente')
 
 

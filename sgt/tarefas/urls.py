@@ -1,5 +1,5 @@
 from django.urls import path
-from tarefas.views import index
+from . import views
 urlpatterns = [
-   path("",index)
+   path("",views.tarefas_pendentes_list, name='tarefas_pendentes_list')
 ]

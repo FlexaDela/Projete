@@ -20,5 +20,6 @@ from tarefas.views import index
 from tarefas.urls import urlpatterns as tarefas_urls
 
 urlpatterns = [
-    path("",include(tarefas_urls))
+    path('admin/', admin.site.urls),
+    path('tarefas/', include('tarefas.urls'))
 ]
