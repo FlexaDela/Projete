@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Tarefas pendentes{% endblock %}
 
@@ -9,7 +10,7 @@
       {% csrf_token %}
       {{ form.as_p }}
       <br>
-      <input type="submit" value="Salvar">
+      <input class="btn btn-success" type="submit" value="Salvar">
     </form>
   </div>
 
@@ -38,7 +39,9 @@
             </div>
             <div class="modal-body">
               <p>
-                Modal Body
+                <a class="btn btn-success" href="{% url 'concluir_tarefa' tarefa.id %}">Concluir</a>
+                <a class="btn btn-danger" href="{% url 'excluir_tarefa' tarefa.id %}" >Excluir</a>
+                <a class="btn btn-warning" href="{% url 'adiar_tarefa' tarefa.id %}" >Adiar</a>
               </p>
             </div>
           </div>
