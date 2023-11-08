@@ -34,8 +34,15 @@ def adiar_tarefa(request, tarefa_id):
    return redirect('tarefas_pendentes_list')
 
 def editar_tarefa(request, tarefa_id):
-   tarefa= get_object_or_404(Tarefas, id=tarefa_id)
-   if request.method == 'POST':
-      form = EditarTarefaForm(request.POST)
-      if form.is_valid():
-         cd = form.cleaned_data
+    tarefa = get_object_or_404(Tarefas, id=tarefa_id)
+    if request.method == 'POST':
+        form = EditarTarefaForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            tarefa.descricao = cd['tarefa']
+            tarefa.categorias = cd['categorias']
+            tarefa.save()
+            return redirect('tarefas_pendentes_list')
+    else:
+        form = EditarTarefaForm(initial={'tarefa':tarefa.descricao, 'categoria':tarefa.categorias})
+    return render(request, 'tarefas/editar_tarefas.html', {'tarefa':tarefa, 'form':form})

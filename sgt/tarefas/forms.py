@@ -14,5 +14,5 @@ class EditarTarefaForm(forms.Form):
         ('precisa ser feito','Precisa ser feito'),
     )
 
-  tarefa = forms.Charfield(max_length=400)
-  categoria = forms.Charfield(choices=OPCOES_CATEGORIAS)
+  tarefa = forms.CharField(max_length=400)
+  categorias = forms.ChoiceField(choices=OPCOES_CATEGORIAS)
